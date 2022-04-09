@@ -2,7 +2,7 @@ DIR_PRE=node/node
 PWD=175745
 
 # 创建redis配置
-for port in `seq 1 6`; do
+for port in `seq 1 3`; do
     rm -rf ./${DIR_PRE}${port} \
     && mkdir -p ./${DIR_PRE}${port}/data \
     && mkdir -p ./${DIR_PRE}${port}/conf \

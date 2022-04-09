@@ -10,7 +10,7 @@ services:
     container_name: redis1
     restart: always
     volumes:
-    - ./node/node1/conf/:/etc/redis/
+    - ./node/node1/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node1/data:/data
     environment:
     - TZ=Asia/Shanghai
@@ -28,7 +28,7 @@ services:
     container_name: redis2
     restart: always
     volumes:
-    - ./node/node2/conf/:/etc/redis/
+    - ./node/node2/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node2/data:/data
     environment:
     - TZ=Asia/Shanghai
@@ -46,7 +46,7 @@ services:
     container_name: redis3
     restart: always
     volumes:
-    - ./node/node3/conf/:/etc/redis/
+    - ./node/node3/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node3/data:/data
     environment:
     - TZ=Asia/Shanghai
