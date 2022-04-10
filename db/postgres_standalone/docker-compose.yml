@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  postgres:
+  well:
     external: true
 
 services:
@@ -11,7 +11,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - postgres
+      - well
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:

@@ -18,10 +18,6 @@ done
 # 删除容器
 docker-compose -f ./docker-compose.yml down
 
-# 创建docker网络
-docker network rm redis
-docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 redis
-
 # 启动redis集群
 docker-compose -f ./docker-compose.yml up -d
 
@@ -39,4 +35,3 @@ docker exec -it redis1 redis-cli -a ${PWD} cluster slots
 docker exec -it redis1 redis-cli -a ${PWD} cluster info
 # 查看集群状态
 docker exec -it redis1 redis-cli -a ${PWD} cluster nodes
-

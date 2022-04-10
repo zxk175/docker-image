@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  redis:
+  well:
     external: true
 
 services:
@@ -11,7 +11,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node1/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node1/data:/data
@@ -30,7 +30,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node2/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node2/data:/data
@@ -49,7 +49,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node3/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node3/data:/data
@@ -68,7 +68,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node4/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node4/data:/data
@@ -87,7 +87,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node5/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node5/data:/data
@@ -106,7 +106,7 @@ services:
     privileged: true
     restart: always
     networks:
-      - redis
+      - well
     volumes:
     - ./node/node6/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node6/data:/data

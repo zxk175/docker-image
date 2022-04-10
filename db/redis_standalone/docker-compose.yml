@@ -1,0 +1,25 @@
+version: '3'
+
+networks:
+  well:
+    external: true
+
+services:
+  redis:
+    image: redis:5.0.14-alpine3.15
+    container_name: redis
+    privileged: true
+    restart: always
+    networks:
+      - well
+    volumes:
+    - ./node/conf/redis.conf:/etc/redis/redis.conf
+    - ./node/data:/data
+    - ./logs:/logs
+    environment:
+    - TZ=Asia/Shanghai
+    - LANG=en_US.UTF-8
+    ports:
+      - '7019:6379'
+      - '17019:16379'
+    command: "redis-server /etc/redis/redis.conf"
