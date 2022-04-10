@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  well:
+    external: true
+
+services:
+  mysql_standalone:
+    image: mysql:5.7.37
+    container_name: mysql_standalone
+    privileged: true
+    restart: always
+    networks:
+      - well
+    volumes:
+      - ./config/my.cnf:/etc/my.cnf
+      - ./config/init:/docker-entrypoint-initdb.d
+      - ./node/data:/var/lib/mysql/
+      - ./node/logs:/var/log/mysql/
+    environment:
+      TZ: Asia/Shanghai
+      LANG: en_US.UTF-8
+      MYSQL_USER: push
+      MYSQL_PASSWORD: Zxk123456
+      MYSQL_DATABASE: push_data
+      MYSQL_ROOT_PASSWORD: Zxk123456
+    ports:
+      - '3306:3306'

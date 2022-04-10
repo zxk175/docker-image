@@ -6,4 +6,6 @@
 /db/redis_standalone/node*
 /db/redis_standalone/logs
 
+/db/mysql_standalone/node/*
+
 /db/postgres_standalone/data/*

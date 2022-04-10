@@ -1,9 +1,6 @@
-# 遇到错误退出
-set -e
-
 NODE_PRE=./node/node
 LOG_PRE=./logs/node
-PWD=175745
+PWD=Zxk123456
 
 # 创建redis配置
 for port in `seq 1 6`; do

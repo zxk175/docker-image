@@ -1,9 +1,6 @@
-# 遇到错误退出
-set -e
-
 NODE_PRE=./node
 LOG_PRE=./logs
-PWD=175745
+PWD=Zxk123456
 
 # 创建redis配置
 rm -rf ${NODE_PRE} \
