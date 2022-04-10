@@ -1,3 +1,4 @@
 .DS_Store
 
 /db/redis/cluster/node*
+/db/redis/cluster/logs

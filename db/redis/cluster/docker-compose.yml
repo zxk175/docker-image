@@ -8,10 +8,14 @@ services:
   redis1:
     image: redis:5.0.14-alpine3.15
     container_name: redis1
+    privileged: true
     restart: always
+    networks:
+      - redis
     volumes:
     - ./node/node1/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node1/data:/data
+    - ./logs/node1:/logs
     environment:
     - TZ=Asia/Shanghai
     - LANG=en_US.UTF-8
@@ -19,17 +23,18 @@ services:
       - '7001:6379'
       - '17001:16379'
     command: ["redis-server", "/etc/redis/redis.conf"]
-    privileged: true
-    networks:
-      - redis
 
   redis2:
     image: redis:5.0.14-alpine3.15
     container_name: redis2
+    privileged: true
     restart: always
+    networks:
+      - redis
     volumes:
     - ./node/node2/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node2/data:/data
+    - ./logs/node2:/logs
     environment:
     - TZ=Asia/Shanghai
     - LANG=en_US.UTF-8
@@ -37,24 +42,79 @@ services:
       - '7002:6379'
       - '17002:16379'
     command: ["redis-server", "/etc/redis/redis.conf"]
-    privileged: true
-    networks:
-      - redis
 
   redis3:
     image: redis:5.0.14-alpine3.15
     container_name: redis3
+    privileged: true
     restart: always
+    networks:
+      - redis
     volumes:
     - ./node/node3/conf/redis.conf:/etc/redis/redis.conf
     - ./node/node3/data:/data
+    - ./logs/node3:/logs
     environment:
     - TZ=Asia/Shanghai
     - LANG=en_US.UTF-8
     ports:
       - '7003:6379'
       - '17003:16379'
-    command: ["redis-server", "/etc/redis/redis.conf"]
+    command: "redis-server /etc/redis/redis.conf"
+
+  redis4:
+    image: redis:5.0.14-alpine3.15
+    container_name: redis4
     privileged: true
+    restart: always
     networks:
       - redis
+    volumes:
+    - ./node/node4/conf/redis.conf:/etc/redis/redis.conf
+    - ./node/node4/data:/data
+    - ./logs/node4:/logs
+    environment:
+    - TZ=Asia/Shanghai
+    - LANG=en_US.UTF-8
+    ports:
+      - '7004:6379'
+      - '17004:16379'
+    command: "redis-server /etc/redis/redis.conf"
+
+  redis5:
+    image: redis:5.0.14-alpine3.15
+    container_name: redis5
+    privileged: true
+    restart: always
+    networks:
+      - redis
+    volumes:
+    - ./node/node5/conf/redis.conf:/etc/redis/redis.conf
+    - ./node/node5/data:/data
+    - ./logs/node5:/logs
+    environment:
+    - TZ=Asia/Shanghai
+    - LANG=en_US.UTF-8
+    ports:
+      - '7005:6379'
+      - '17005:16379'
+    command: "redis-server /etc/redis/redis.conf"
+
+  redis6:
+    image: redis:5.0.14-alpine3.15
+    container_name: redis6
+    privileged: true
+    restart: always
+    networks:
+      - redis
+    volumes:
+    - ./node/node6/conf/redis.conf:/etc/redis/redis.conf
+    - ./node/node6/data:/data
+    - ./logs/node6:/logs
+    environment:
+    - TZ=Asia/Shanghai
+    - LANG=en_US.UTF-8
+    ports:
+      - '7006:6379'
+      - '17006:16379'
+    command: "redis-server /etc/redis/redis.conf"

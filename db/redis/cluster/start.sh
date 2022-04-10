@@ -1,8 +1,11 @@
+# 遇到错误退出
+set -e
+
 DIR_PRE=node/node
 PWD=175745
 
 # 创建redis配置
-for port in `seq 1 3`; do
+for port in `seq 1 6`; do
     rm -rf ./${DIR_PRE}${port} \
     && mkdir -p ./${DIR_PRE}${port}/data \
     && mkdir -p ./${DIR_PRE}${port}/conf \
@@ -20,7 +23,10 @@ docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.
 docker-compose -f ./docker-compose.yml up -d
 
 # redis集群初始化
-docker exec -it redis1 redis-cli --cluster create -a ${PWD} 192.168.0.2:6379 192.168.0.3:6379 192.168.0.4:6379 --cluster-replicas 0
+docker exec -it redis1 \
+redis-cli --cluster \
+create -a ${PWD} --cluster-replicas 1 \
+192.168.0.2:6379 192.168.0.3:6379 192.168.0.4:6379 192.168.0.5:6379 192.168.0.6:6379 192.168.0.7:6379
 
 # 睡眠5秒
 sleep 5
