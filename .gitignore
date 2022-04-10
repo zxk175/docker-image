@@ -2,3 +2,5 @@
 
 /db/redis/cluster/node*
 /db/redis/cluster/logs
+
+db/postgres/standalone/data
