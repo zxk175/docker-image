@@ -13,7 +13,7 @@ for port in `seq 1 6`; do
 done
 
 # 删除容器
-docker-compose down
+docker-compose -f ./docker-compose.yml down
 
 # 创建docker网络
 docker network rm redis
