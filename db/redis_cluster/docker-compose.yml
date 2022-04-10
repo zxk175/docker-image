@@ -5,9 +5,9 @@ networks:
     external: true
 
 services:
-  redis1:
+  redis_cluster1:
     image: redis:5.0.14-alpine3.15
-    container_name: redis1
+    container_name: redis_cluster1
     privileged: true
     restart: always
     networks:
@@ -24,9 +24,9 @@ services:
       - '17001:16379'
     command: ["redis-server", "/etc/redis/redis.conf"]
 
-  redis2:
+  redis_cluster2:
     image: redis:5.0.14-alpine3.15
-    container_name: redis2
+    container_name: redis_cluster2
     privileged: true
     restart: always
     networks:
@@ -43,9 +43,9 @@ services:
       - '17002:16379'
     command: ["redis-server", "/etc/redis/redis.conf"]
 
-  redis3:
+  redis_cluster3:
     image: redis:5.0.14-alpine3.15
-    container_name: redis3
+    container_name: redis_cluster3
     privileged: true
     restart: always
     networks:
@@ -62,9 +62,9 @@ services:
       - '17003:16379'
     command: "redis-server /etc/redis/redis.conf"
 
-  redis4:
+  redis_cluster4:
     image: redis:5.0.14-alpine3.15
-    container_name: redis4
+    container_name: redis_cluster4
     privileged: true
     restart: always
     networks:
@@ -81,9 +81,9 @@ services:
       - '17004:16379'
     command: "redis-server /etc/redis/redis.conf"
 
-  redis5:
+  redis_cluster5:
     image: redis:5.0.14-alpine3.15
-    container_name: redis5
+    container_name: redis_cluster5
     privileged: true
     restart: always
     networks:
@@ -100,9 +100,9 @@ services:
       - '17005:16379'
     command: "redis-server /etc/redis/redis.conf"
 
-  redis6:
+  redis_cluster6:
     image: redis:5.0.14-alpine3.15
-    container_name: redis6
+    container_name: redis_cluster6
     privileged: true
     restart: always
     networks:
