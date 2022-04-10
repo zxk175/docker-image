@@ -1,17 +1,18 @@
 # 遇到错误退出
 set -e
 
-DIR_PRE=node/node
+NODE_PRE=./node/node
+LOG_PRE=./logs/node
 PWD=175745
 
 # 创建redis配置
 for port in `seq 1 6`; do
-    rm -rf ./${DIR_PRE}${port} \
-    && mkdir -p ./${DIR_PRE}${port}/data \
-    && mkdir -p ./${DIR_PRE}${port}/conf \
-    && touch ./logs/node${port}/redis.log \
-    && chmod 777 ./logs/node${port}/redis.log \
-    && PORT=${port} PWD=${PWD} envsubst < ./redis.conf > ./${DIR_PRE}${port}/conf/redis.conf
+    rm -rf ${NODE_PRE}${port} \
+    && mkdir -p ${NODE_PRE}${port}/data \
+    && mkdir -p ${NODE_PRE}${port}/conf \
+    && touch ${LOG_PRE}${port}/redis.log \
+    && chmod 777 ${LOG_PRE}${port}/redis.log \
+    && PORT=${port} PWD=${PWD} envsubst < ./redis.conf > ${NODE_PRE}${port}/conf/redis.conf
 done
 
 # 删除容器
