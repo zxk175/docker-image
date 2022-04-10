@@ -9,6 +9,8 @@ for port in `seq 1 6`; do
     rm -rf ./${DIR_PRE}${port} \
     && mkdir -p ./${DIR_PRE}${port}/data \
     && mkdir -p ./${DIR_PRE}${port}/conf \
+    && touch ./logs/node${port}/redis.log \
+    && chmod 777 ./logs/node${port}/redis.log \
     && PORT=${port} PWD=${PWD} envsubst < ./redis.conf > ./${DIR_PRE}${port}/conf/redis.conf
 done
 
@@ -21,9 +23,6 @@ docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.
 
 # 启动redis集群
 docker-compose -f ./docker-compose.yml up -d
-
-# 睡眠3秒
-sleep 3
 
 # redis集群初始化
 docker exec -it redis1 \
