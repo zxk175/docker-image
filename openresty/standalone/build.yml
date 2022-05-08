@@ -1,0 +1,15 @@
+version: '3'
+name: openresty_standalone
+
+services:
+  openresty:
+    build:
+      context: ./config
+      args:
+        - RESTY_IMAGE_TAG=${RESTY_IMAGE_TAG}
+        - RESTY_J=${RESTY_J}
+        - RESTY_VERSION=${RESTY_VERSION}
+        - RESTY_PREFIX=${RESTY_PREFIX}
+    image: "zxk175/openresty-alpine:${RESTY_VERSION}"
+
+

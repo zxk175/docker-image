@@ -1,5 +1,7 @@
 version: '3'
 
+name: redis_cluster
+
 networks:
   well:
     external: true
@@ -13,16 +15,16 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node1/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node1/data:/data
-    - ./logs/node1:/logs
+      - ./node/node1/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node1/data:/data
+      - ./logs/node1:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7001:6379'
       - '17001:16379'
-    command: ["redis-server", "/etc/redis/redis.conf"]
+    command: [ "redis-server", "/etc/redis/redis.conf" ]
 
   redis_cluster2:
     image: redis:5.0.14-alpine3.15
@@ -32,16 +34,16 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node2/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node2/data:/data
-    - ./logs/node2:/logs
+      - ./node/node2/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node2/data:/data
+      - ./logs/node2:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7002:6379'
       - '17002:16379'
-    command: ["redis-server", "/etc/redis/redis.conf"]
+    command: [ "redis-server", "/etc/redis/redis.conf" ]
 
   redis_cluster3:
     image: redis:5.0.14-alpine3.15
@@ -51,12 +53,12 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node3/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node3/data:/data
-    - ./logs/node3:/logs
+      - ./node/node3/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node3/data:/data
+      - ./logs/node3:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7003:6379'
       - '17003:16379'
@@ -70,12 +72,12 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node4/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node4/data:/data
-    - ./logs/node4:/logs
+      - ./node/node4/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node4/data:/data
+      - ./logs/node4:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7004:6379'
       - '17004:16379'
@@ -89,12 +91,12 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node5/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node5/data:/data
-    - ./logs/node5:/logs
+      - ./node/node5/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node5/data:/data
+      - ./logs/node5:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7005:6379'
       - '17005:16379'
@@ -108,12 +110,12 @@ services:
     networks:
       - well
     volumes:
-    - ./node/node6/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/node6/data:/data
-    - ./logs/node6:/logs
+      - ./node/node6/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/node6/data:/data
+      - ./logs/node6:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7006:6379'
       - '17006:16379'

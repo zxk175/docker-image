@@ -1,5 +1,7 @@
 version: '3'
 
+name: postgres_standalone
+
 networks:
   well:
     external: true

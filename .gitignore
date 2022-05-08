@@ -1,11 +1,11 @@
 .DS_Store
 
-/db/redis_cluster/node*
-/db/redis_cluster/logs
+/db/redis/cluster/node*
+/db/redis/cluster/logs
 
-/db/redis_standalone/node*
-/db/redis_standalone/logs
+/db/redis/standalone/node*
+/db/redis/standalone/logs
 
-/db/mysql_standalone/node/*
+/db/mysql/standalone/node/*
 
-/db/postgres_standalone/data/*
+/db/postgres/standalone/data/*

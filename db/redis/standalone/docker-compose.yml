@@ -1,5 +1,7 @@
 version: '3'
 
+name: redis_standalone
+
 networks:
   well:
     external: true
@@ -13,12 +15,12 @@ services:
     networks:
       - well
     volumes:
-    - ./node/conf/redis.conf:/etc/redis/redis.conf
-    - ./node/data:/data
-    - ./logs:/logs
+      - ./node/conf/redis.conf:/etc/redis/redis.conf
+      - ./node/data:/data
+      - ./logs:/logs
     environment:
-    - TZ=Asia/Shanghai
-    - LANG=en_US.UTF-8
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
     ports:
       - '7019:6379'
       - '17019:16379'
