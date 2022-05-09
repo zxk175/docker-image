@@ -145,7 +145,6 @@ ARG RESTY_PREFIX=="/usr/local/openresty"
 WORKDIR ${RESTY_PREFIX}
 
 COPY --from=base ${RESTY_PREFIX}/ .
-COPY conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
     && apk update \
@@ -156,17 +155,20 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
             libxslt \
             zlib
 
-RUN mkdir -p /var/run/openresty \
+RUN mv ${RESTY_PREFIX}/nginx/conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf.bak \
+    && mkdir -p /var/run/openresty \
     && mkdir -p ${RESTY_PREFIX}/logs \
     && addgroup -g 1000 -S www && adduser www -D -G www -u 1000 -s /bin/sh \
     && ln -sf ${RESTY_PREFIX}/nginx/sbin/nginx /usr/local/bin/nginx \
     && ln -sf /dev/stdout ${RESTY_PREFIX}/nginx/logs/access.log \
-    && ln -sf /dev/stderr ${RESTY_PREFIX}/nginx/logs/error.log
+    && ln -sf /dev/stderr ${RESTY_PREFIX}/nginx/logs/error.log \
+
+COPY conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf
 
 # 为方便起见，将其他二进制文件添加到 PATH
 ENV PATH=$PATH:${RESTY_PREFIX}/luajit/bin:${RESTY_PREFIX}/nginx/sbin
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 # 使用SIGQUIT而不是默认的SIGTERM来清除请求
 # https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
