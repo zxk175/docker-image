@@ -1,0 +1,27 @@
+version: '3'
+
+name: openresty_standalone
+
+networks:
+  well:
+    external: true
+
+services:
+  openresty:
+    image: zxk175/openresty-alpine:1.19.9.1
+    container_name: openresty
+    privileged: true
+    restart: always
+    networks:
+      - well
+    volumes:
+      - ./config/www:/opt/openresty/www
+      - ./config/logs:/opt/openresty/nginx/logs
+      - ./config/conf/nginx.conf:/opt/openresty/nginx/conf/nginx.conf
+      - ./config/conf/date-format.conf:/opt/openresty/nginx/conf/date-format.conf
+    environment:
+      - TZ=Asia/Shanghai
+      - LANG=en_US.UTF-8
+    ports:
+      - '80:80'
+      - '443:443'

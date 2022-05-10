@@ -9,3 +9,5 @@
 /db/mysql/standalone/node/*
 
 /db/postgres/standalone/data/*
+
+/openresty/standalone/config/logs/*
