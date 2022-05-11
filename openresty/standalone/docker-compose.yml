@@ -20,7 +20,6 @@ services:
       - ./config/conf/nginx.conf:/opt/openresty/nginx/conf/nginx.conf
       - ./config/conf/date-format.conf:/opt/openresty/nginx/conf/date-format.conf
     environment:
-      - TZ=Asia/Shanghai
       - LANG=en_US.UTF-8
     ports:
       - '80:80'

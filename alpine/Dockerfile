@@ -7,8 +7,8 @@ LABEL maintainer="zxk175 zxk175@qq.com"
 ARG ALPINE_MIRRORS_VERSION="v3.15"
 
 # 更新alpine的软件源为阿里云
-RUN echo http://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /etc/apk/repositories \
-    && echo http://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/community/ >> /etc/apk/repositories \
+RUN echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /etc/apk/repositories \
+    && echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/community/ >> /etc/apk/repositories \
     && apk update \
     && apk upgrade \
     && apk add tzdata \

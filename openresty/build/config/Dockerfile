@@ -144,14 +144,12 @@ WORKDIR ${RESTY_PREFIX}
 
 COPY --from=base ${RESTY_PREFIX}/ .
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
-    && apk update \
-    && apk add --no-cache \
-            gd \
-            geoip \
-            libgcc \
-            libxslt \
-            zlib
+RUN apk add --no-cache \
+        gd \
+        geoip \
+        libgcc \
+        libxslt \
+        zlib
 
 RUN mv ${RESTY_PREFIX}/nginx/conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf.bak \
     && mkdir -p /var/run/openresty \
