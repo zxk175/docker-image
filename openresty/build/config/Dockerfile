@@ -65,9 +65,7 @@ ARG _RESTY_CONFIG_DEPS="--with-pcre \
     --with-ld-opt='-L${RESTY_DEPS_PREFIX}/pcre/lib -L${RESTY_DEPS_PREFIX}/openssl/lib -Wl,-rpath,${RESTY_DEPS_PREFIX}/pcre/lib:${RESTY_DEPS_PREFIX}/openssl/lib' \
     "
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
-    && apk update \
-    && apk add --no-cache --virtual .build-deps \
+RUN apk add --no-cache --virtual .build-deps \
             build-base \
             coreutils \
             curl \
