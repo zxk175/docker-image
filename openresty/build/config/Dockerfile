@@ -157,8 +157,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/re
 
 RUN mv ${RESTY_PREFIX}/nginx/conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf.bak \
     && mkdir -p /var/run/openresty \
-    && mkdir -p ${RESTY_PREFIX}/lua \
-    && mkdir -p ${RESTY_PREFIX}/logs \
+    && mkdir -p ${RESTY_PREFIX}/nginx/lua \
+    && mkdir -p ${RESTY_PREFIX}/nginx/logs \
     && addgroup -g 1000 -S www && adduser www -D -G www -u 1000 -s /bin/sh \
     && ln -sf ${RESTY_PREFIX}/nginx/sbin/nginx /usr/local/bin/nginx \
     && ln -sf /dev/stdout ${RESTY_PREFIX}/nginx/logs/access.log \
