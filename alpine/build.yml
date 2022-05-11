@@ -1,0 +1,14 @@
+version: '3'
+
+name: alpine
+
+services:
+  openresty:
+    build:
+      context: .
+      args:
+        - IMAGE_TAG=${IMAGE_TAG}
+        - ALPINE_MIRRORS_VERSION=${ALPINE_MIRRORS_VERSION}
+    image: "zxk175/alpine:${IMAGE_TAG}"
+
+

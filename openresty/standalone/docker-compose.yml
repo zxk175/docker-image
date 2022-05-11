@@ -15,7 +15,7 @@ services:
     networks:
       - well
     volumes:
-      - ./config/www:/opt/openresty/www
+      - ./config/www:/opt/openresty/nginx/www
       - ./config/logs:/opt/openresty/nginx/logs
       - ./config/conf/nginx.conf:/opt/openresty/nginx/conf/nginx.conf
       - ./config/conf/date-format.conf:/opt/openresty/nginx/conf/date-format.conf
