@@ -1,6 +1,6 @@
 ARG IMAGE_TAG="3.15.4"
 
-FROM alpine:${IMAGE_TAG} AS base
+FROM alpine:${IMAGE_TAG}
 
 LABEL maintainer="zxk175 zxk175@qq.com"
 
@@ -12,7 +12,7 @@ RUN echo http://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /etc
     && apk update \
     && apk upgrade \
     && apk add tzdata \
-    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && apk del tzdata \
     && rm -rf /var/cache/apk/*
