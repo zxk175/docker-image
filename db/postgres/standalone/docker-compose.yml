@@ -15,7 +15,8 @@ services:
     networks:
       - well
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./node/data:/var/lib/postgresql/data
+      - ./node/logs:/var/lib/postgresql/data/log
     environment:
       TZ: Asia/Shanghai
       LANG: en_US.UTF-8

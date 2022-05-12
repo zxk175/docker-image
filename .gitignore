@@ -8,6 +8,6 @@
 
 /db/mysql/standalone/node/*
 
-/db/postgres/standalone/data/*
+/db/postgres/standalone/node/*
 
 /openresty/standalone/config/logs/*
