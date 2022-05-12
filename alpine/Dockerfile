@@ -1,4 +1,4 @@
-ARG IMAGE_TAG="3.15.4"
+ARG IMAGE_TAG=3.15.4
 
 FROM alpine:${IMAGE_TAG}
 

@@ -1,10 +1,12 @@
 # ============================================= 构建镜像 =============================================
-ARG RESTY_IMAGE_BASE="alpine"
-ARG RESTY_IMAGE_TAG="3.15.4"
+ARG RESTY_IMAGE_BASE=alpine
+ARG RESTY_IMAGE_TAG=3.15.4
 
-FROM ${RESTY_IMAGE_BASE}:${RESTY_IMAGE_TAG} AS base
+FROM alpine:${RESTY_IMAGE_TAG} AS base
 
 LABEL maintainer="zxk175 zxk175@qq.com"
+
+ARG ALPINE_MIRRORS_VERSION="v3.15"
 
 # Docker构建参数
 ARG RESTY_VERSION="1.19.9.1"
@@ -65,7 +67,9 @@ ARG _RESTY_CONFIG_DEPS="--with-pcre \
     --with-ld-opt='-L${RESTY_DEPS_PREFIX}/pcre/lib -L${RESTY_DEPS_PREFIX}/openssl/lib -Wl,-rpath,${RESTY_DEPS_PREFIX}/pcre/lib:${RESTY_DEPS_PREFIX}/openssl/lib' \
     "
 
-RUN apk add --no-cache --virtual .build-deps \
+RUN echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /etc/apk/repositories \
+    && echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/community/ >> /etc/apk/repositories \
+    && apk add --no-cache --virtual .build-deps \
             build-base \
             coreutils \
             curl \
@@ -131,8 +135,8 @@ RUN mkdir -p ${RESTY_PREFIX} \
 
 
 # ============================================= 最终镜像 =============================================
-ARG RESTY_IMAGE_BASE="alpine"
-ARG RESTY_IMAGE_TAG="3.15.4"
+ARG RESTY_IMAGE_BASE=alpine
+ARG RESTY_IMAGE_TAG=3.15.4
 
 FROM ${RESTY_IMAGE_BASE}:${RESTY_IMAGE_TAG}
 
