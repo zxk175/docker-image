@@ -17,4 +17,8 @@ RUN echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /et
     && apk del tzdata \
     && rm -rf /var/cache/apk/*
 
-CMD  ["/bin/sh"]
+COPY scripts/ll /usr/bin/ll
+
+RUN chmod a+x /usr/bin/ll
+
+CMD ["/bin/sh"]
