@@ -3,7 +3,7 @@ version: '3'
 name: alpine
 
 services:
-  openresty:
+  alpine:
     build:
       context: .
       args:
