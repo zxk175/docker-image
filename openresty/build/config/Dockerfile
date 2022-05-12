@@ -160,11 +160,14 @@ RUN mv ${RESTY_PREFIX}/nginx/conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.co
     && mkdir -p ${RESTY_PREFIX}/nginx/lua \
     && mkdir -p ${RESTY_PREFIX}/nginx/logs \
     && addgroup -g 1000 -S www && adduser www -D -G www -u 1000 -s /bin/sh \
-    && ln -sf ${RESTY_PREFIX}/nginx/sbin/nginx /usr/local/bin/nginx \
-    && ln -sf /dev/stdout ${RESTY_PREFIX}/nginx/logs/access.log \
-    && ln -sf /dev/stderr ${RESTY_PREFIX}/nginx/logs/error.log
+    && ln -sf ${RESTY_PREFIX}/nginx/sbin/nginx /usr/local/bin/nginx
+    # && ln -sf /dev/stdout ${RESTY_PREFIX}/nginx/logs/access.log \
+    # && ln -sf /dev/stderr ${RESTY_PREFIX}/nginx/logs/error.log
 
 COPY conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf
+COPY scripts/ .
+
+RUN ./init.sh ${RESTY_PREFIX}
 
 # 为方便起见，将其他二进制文件添加到 PATH
 ENV PATH=$PATH:${RESTY_PREFIX}/luajit/bin:${RESTY_PREFIX}/nginx/sbin
