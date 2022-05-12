@@ -1,13 +1,10 @@
 .DS_Store
 
-/db/redis/cluster/node*
-/db/redis/cluster/logs
+/db/redis/*/node*
+/db/redis/*/logs
 
-/db/redis/standalone/node*
-/db/redis/standalone/logs
+/db/mysql/mysql_standalone/node/*
 
-/db/mysql/standalone/node/*
-
-/db/postgres/standalone/node/*
+/db/postgres/postgres_standalone/node/*
 
 /openresty/openresty_standalone/config/logs/*

@@ -9,7 +9,7 @@ networks:
 services:
   openresty:
     image: zxk175/openresty-alpine:1.19.9.1
-    container_name: openresty
+    container_name: openresty_standalone
     privileged: true
     restart: always
     networks:

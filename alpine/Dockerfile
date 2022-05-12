@@ -10,8 +10,9 @@ ARG ALPINE_MIRRORS_VERSION="v3.15"
 RUN echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/main/ > /etc/apk/repositories \
     && echo https://mirrors.aliyun.com/alpine/${ALPINE_MIRRORS_VERSION}/community/ >> /etc/apk/repositories \
     && apk update \
-    && apk upgrade \
-    && apk add tzdata \
+    && apk upgrade
+
+RUN apk add tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && apk del tzdata \
