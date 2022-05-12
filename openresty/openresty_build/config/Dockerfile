@@ -161,13 +161,11 @@ RUN mv ${RESTY_PREFIX}/nginx/conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.co
     && mkdir -p ${RESTY_PREFIX}/nginx/logs \
     && addgroup -g 1000 -S www && adduser www -D -G www -u 1000 -s /bin/sh \
     && ln -sf ${RESTY_PREFIX}/nginx/sbin/nginx /usr/local/bin/nginx
-    # && ln -sf /dev/stdout ${RESTY_PREFIX}/nginx/logs/access.log \
-    # && ln -sf /dev/stderr ${RESTY_PREFIX}/nginx/logs/error.log
 
 COPY conf/nginx.conf ${RESTY_PREFIX}/nginx/conf/nginx.conf
-COPY scripts/ .
+# COPY scripts/ .
 
-RUN ./init.sh ${RESTY_PREFIX}
+# RUN ./init.sh ${RESTY_PREFIX}
 
 # 为方便起见，将其他二进制文件添加到 PATH
 ENV PATH=$PATH:${RESTY_PREFIX}/luajit/bin:${RESTY_PREFIX}/nginx/sbin
@@ -175,7 +173,7 @@ ENV PATH=$PATH:${RESTY_PREFIX}/luajit/bin:${RESTY_PREFIX}/nginx/sbin
 EXPOSE 80
 EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off; error_log /dev/stderr info;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 # 使用SIGQUIT而不是默认的SIGTERM来清除请求
 # https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
