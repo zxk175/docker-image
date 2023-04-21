@@ -3,10 +3,12 @@
 /db/redis/*/node*
 /db/redis/*/logs
 
-/db/mysql/mysql_standalone/node/*
+/db/mysql/mysql_standalone/node*
 
-/db/postgres/postgres_standalone/node/*
+/db/postgres/postgres_standalone/node*
 
-/openresty/openresty_standalone/config/logs/*
+/openresty/openresty_standalone/config/logs*
 
-/nacos/nacos_standalone/logs/*
+/nacos/nacos_standalone/logs*
+
+seata/seata_standalone/data*
