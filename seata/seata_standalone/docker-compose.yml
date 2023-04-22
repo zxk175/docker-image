@@ -13,6 +13,7 @@ services:
   #   networks:
   #     - well
   #   environment:
+  #     - TZ=Asia/Shanghai
   #     - STORE_MODE=file
   #     - SEATA_PORT=8091
   #   ports:
@@ -21,12 +22,12 @@ services:
 
   seata:
     image: seataio/seata-server:1.6.1
+    hostname: seata_standalone
     container_name: seata_standalone
     networks:
       - well
     environment:
-      - STORE_MODE=db
-      - SEATA_PORT=8091
+      - TZ=Asia/Shanghai
     volumes:
       - ./config/resources/application.yml:/seata-server/resources/application.yml
       - ./data/sessionStore:/seata-server/sessionStore
