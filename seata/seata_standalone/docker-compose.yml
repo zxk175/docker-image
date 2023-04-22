@@ -15,12 +15,12 @@ services:
     restart: on-failure
     networks:
       - well
-    ports:
-      - "8091:8091"
-      - "7091:7091"
     environment:
       - STORE_MODE=db
       - SEATA_PORT=8091
+    ports:
+      - "8091:8091"
+      - "7091:7091"
 
   # seata:
   #   image: seataio/seata-server:1.6.1
