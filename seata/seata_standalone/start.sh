@@ -1,3 +1,5 @@
+rm -rf ./data
+
 # 删除容器
 docker-compose -f ./docker-compose.yml down
 
