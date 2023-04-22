@@ -41,22 +41,8 @@ seata:
       cluster: default
       username: nacos
       password: nacos
-  # store:
-  #   mode: db
-  #   db:
-  #     datasource: druid
-  #     dbType: mysql
-  #     driverClassName: com.mysql.jdbc.Driver
-  #     url: jdbc:mysql://mysql_standalone:3306/seata_db?rewriteBatchedStatements=true
-  #     user: seata
-  #     password: seata
-  #     minConn: 5
-  #     maxConn: 100
-  #     globalTable: global_table
-  #     branchTable: branch_table
-  #     lockTable: lock_table
-  #     queryLimit: 100
-  #     maxWait: 5000
+  store:
+    mode: db
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
     tokenValidityInMilliseconds: 1800000

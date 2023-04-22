@@ -13,7 +13,6 @@ services:
     networks:
       - well
     environment:
-      - STORE_MODE=db
       - SEATA_PORT=8091
     volumes:
       - ./config/resources/application.yml:/seata-server/resources/application.yml

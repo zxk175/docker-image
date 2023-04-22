@@ -8,9 +8,8 @@ networks:
 
 services:
   nacos:
-    image: nacos/nacos-server:v2.2.2
+    image: nacos/nacos-server:v2.2.0
     container_name: nacos_standalone_mysql
-    privileged: true
     restart: on-failure
     networks:
       - well
