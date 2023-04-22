@@ -34,8 +34,48 @@ seata:
       cluster: default
       username: nacos
       password: nacos
+  store:
+    mode: db
+    session:
+      mode: db
+    lock:
+      mode: db
+    db:
+      datasource: druid
+      db-type: mysql
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://mysql_standalone:3306/seata_db?rewriteBatchedStatements=true
+      user: seata
+      password: seata
+      min-conn: 10
+      max-conn: 100
+      lock-table: lock_table
+      global-table: global_table
+      branch-table: branch_table
+      distributed-lock-table: distributed_lock
+      query-limit: 1000
+      max-wait: 5000
   server:
     service-port: 8091
+    max-commit-retry-timeout: -1
+    max-rollback-retry-timeout: -1
+    rollback-retry-timeout-unlock-enable: false
+    enable-check-auth: true
+    enable-parallel-request-handle: true
+    retry-dead-threshold: 130000
+    xaer-nota-retry-timeout: 60000
+    enableParallelRequestHandle: true
+    recovery:
+      committing-retry-period: 1000
+      async-committing-retry-period: 1000
+      rollbacking-retry-period: 1000
+      timeout-retry-period: 1000
+    undo:
+      log-save-days: 7
+      log-delete-period: 86400000
+    session:
+      branch-async-queue-size: 5000
+      enable-branch-async-remove: false
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
     tokenValidityInMilliseconds: 1800000
