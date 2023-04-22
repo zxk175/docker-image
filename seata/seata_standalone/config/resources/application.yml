@@ -30,7 +30,7 @@ seata:
       group: SEATA_GROUP
       usernam: nacos
       password: nacos
-      data-id: seataServer.properties
+      data-id: seata.properties
   registry:
     type: nacos
     nacos:
@@ -41,8 +41,27 @@ seata:
       cluster: default
       username: nacos
       password: nacos
-  store:
-    mode: db
+  # store:
+  #   mode: db
+  #   session:
+  #     mode: db
+  #   lock:
+  #     mode: db
+  #   db:
+  #     datasource: druid
+  #     db-type: mysql
+  #     driver-class-name: com.mysql.jdbc.Driver
+  #     url: jdbc:mysql://127.0.0.1:3306/seata?rewriteBatchedStatements=true
+  #     user: mysql
+  #     password: mysql
+  #     min-conn: 10
+  #     max-conn: 100
+  #     global-table: global_table
+  #     branch-table: branch_table
+  #     lock-table: lock_table
+  #     distributed-lock-table: distributed_lock
+  #     query-limit: 1000
+  #     max-wait: 5000
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
     tokenValidityInMilliseconds: 1800000

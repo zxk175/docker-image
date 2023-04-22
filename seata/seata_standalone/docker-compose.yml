@@ -15,8 +15,6 @@ services:
   #   environment:
   #     - STORE_MODE=file
   #     - SEATA_PORT=8091
-  #   volumes:
-  #     - ./data/logs:/root/logs/seata
   #   ports:
   #     - "7091:7091"
   #     - "8091:8091"
