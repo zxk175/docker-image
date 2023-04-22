@@ -26,8 +26,8 @@ seata:
     type: nacos
     nacos:
       server-addr: nacos_standalone_mysql:8848
-      namespace: seata
-      # namespace: 5aa1df41-2aa4-4707-b494-fe1d39ebb2ed
+      # namespace: seata
+      namespace: 5aa1df41-2aa4-4707-b494-fe1d39ebb2ed
       group: SEATA_GROUP
       usernam: nacos
       password: nacos
@@ -49,9 +49,9 @@ seata:
       datasource: druid
       dbType: mysql
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/seata_db?rewriteBatchedStatements=true
-      user: root
-      password: root
+      url: jdbc:mysql://mysql_standalone:3306/seata_db?rewriteBatchedStatements=true
+      user: seata
+      password: seata
       minConn: 5
       maxConn: 100
       globalTable: global_table

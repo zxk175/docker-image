@@ -7,35 +7,35 @@ networks:
     external: true
 
 services:
-  # seata-temp:
-  #   image: seataio/seata-server:1.5.2
-  #   hostname: seata_standalone
-  #   container_name: seata_standalone
-  #   privileged: true
-  #   restart: on-failure
-  #   networks:
-  #     - well
-  #   ports:
-  #     - "8091:8091"
-  #     - "7091:7091"
-  #   environment:
-  #     - SEATA_PORT=8091
-  #     - STORE_MODE=file
-
-  seata:
-    image: seataio/seata-server:1.5.2
+  seata-temp:
+    image: seataio/seata-server:1.6.1
     hostname: seata_standalone
     container_name: seata_standalone
+    privileged: true
+    restart: on-failure
     networks:
       - well
-    environment:
-      - STORE_MODE=db
-      - SEATA_IP=127.0.0.1
-      - SEATA_PORT=8091
-    volumes:
-      - ./config/resources/application.yml:/seata-server/resources/application.yml
-      - ./data/sessionStore:/seata-server/sessionStore
-      - ./data/logs:/root/logs/seata
     ports:
       - "8091:8091"
       - "7091:7091"
+    environment:
+      - STORE_MODE=db
+      - SEATA_PORT=8091
+
+  # seata:
+  #   image: seataio/seata-server:1.6.1
+  #   hostname: seata_standalone
+  #   container_name: seata_standalone
+  #   networks:
+  #     - well
+  #   environment:
+  #     - STORE_MODE=db
+  #     - SEATA_IP=192.168.220.230
+  #     - SEATA_PORT=8091
+  #   volumes:
+  #     - ./config/resources/application.yml:/seata-server/resources/application.yml
+  #     - ./data/sessionStore:/seata-server/sessionStore
+  #     - ./data/logs:/root/logs/seata
+  #   ports:
+  #     - "8091:8091"
+  #     - "7091:7091"
