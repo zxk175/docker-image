@@ -23,14 +23,7 @@ console:
 
 seata:
   config:
-    type: nacos
-    nacos:
-      server-addr: 172.30.0.1:8848
-      namespace: 5aa1df41-2aa4-4707-b494-fe1d39ebb2ed
-      group: SEATA_GROUP
-      usernam: nacos
-      password: nacos
-      data-id: seata.properties
+    type: file
   registry:
     type: nacos
     nacos:
@@ -41,6 +34,8 @@ seata:
       cluster: default
       username: nacos
       password: nacos
+  server:
+    service-port: 8091
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
     tokenValidityInMilliseconds: 1800000
