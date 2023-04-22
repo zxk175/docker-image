@@ -13,14 +13,11 @@ services:
     networks:
       - well
     environment:
+      - STORE_MODE=file
       - SEATA_PORT=8091
-    volumes:
-      - ./config/resources/application.yml:/seata-server/resources/application.yml
-      - ./data/sessionStore:/seata-server/sessionStore
-      - ./data/logs:/root/logs/seata
     ports:
-      - "8091:8091"
       - "7091:7091"
+      - "8091:8091"
 
   # seata:
   #   image: seataio/seata-server:1.6.1
@@ -29,12 +26,11 @@ services:
   #     - well
   #   environment:
   #     - STORE_MODE=db
-  #     - SEATA_IP=192.168.220.230
   #     - SEATA_PORT=8091
   #   volumes:
   #     - ./config/resources/application.yml:/seata-server/resources/application.yml
   #     - ./data/sessionStore:/seata-server/sessionStore
   #     - ./data/logs:/root/logs/seata
   #   ports:
-  #     - "8091:8091"
   #     - "7091:7091"
+  #     - "8091:8091"
