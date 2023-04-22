@@ -7,30 +7,32 @@ networks:
     external: true
 
 services:
-  seata-temp:
-    image: seataio/seata-server:1.6.1
-    container_name: seata_standalone
-    networks:
-      - well
-    environment:
-      - STORE_MODE=file
-      - SEATA_PORT=8091
-    ports:
-      - "7091:7091"
-      - "8091:8091"
-
-  # seata:
+  # seata-temp:
   #   image: seataio/seata-server:1.6.1
   #   container_name: seata_standalone
   #   networks:
   #     - well
   #   environment:
-  #     - STORE_MODE=db
+  #     - STORE_MODE=file
   #     - SEATA_PORT=8091
   #   volumes:
-  #     - ./config/resources/application.yml:/seata-server/resources/application.yml
-  #     - ./data/sessionStore:/seata-server/sessionStore
   #     - ./data/logs:/root/logs/seata
   #   ports:
   #     - "7091:7091"
   #     - "8091:8091"
+
+  seata:
+    image: seataio/seata-server:1.6.1
+    container_name: seata_standalone
+    networks:
+      - well
+    environment:
+      - STORE_MODE=db
+      - SEATA_PORT=8091
+    volumes:
+      - ./config/resources/application.yml:/seata-server/resources/application.yml
+      - ./data/sessionStore:/seata-server/sessionStore
+      - ./data/logs:/root/logs/seata
+    ports:
+      - "7091:7091"
+      - "8091:8091"
