@@ -14,10 +14,10 @@ services:
     networks:
       - well
     env_file:
-      - ./env/custom-application-config.env
+      - ./nacos.env
     volumes:
+      - ./config/application.properties:/home/nacos/conf/application.properties
       - ./logs/:/home/nacos/logs
-      - ./init/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
       - "9848:9848"

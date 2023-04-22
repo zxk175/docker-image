@@ -29,7 +29,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - ./config/resources/application.yml:/seata-server/resources/application.yml
+      - ./config/application.yml:/seata-server/resources/application.yml
       - ./data/sessionStore:/seata-server/sessionStore
       - ./data/logs:/root/logs/seata
     ports:
