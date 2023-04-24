@@ -29,15 +29,15 @@ seata:
       namespace: 5aa1df41-2aa4-4707-b494-fe1d39ebb2ed
       group: SEATA_GROUP
       username: nacos
-      password: nacos1
+      password: nacos
       data-id: seata.properties
   registry:
     type: nacos
     nacos:
       application: seata-server
       server-addr: 172.30.0.1:8848
-      group: SEATA_GROUP
       namespace: 5aa1df41-2aa4-4707-b494-fe1d39ebb2ed
+      group: SEATA_GROUP
       cluster: default
       username: nacos
       password: nacos
